@@ -1,204 +1,152 @@
 
-/* CSS RESET */
+:root{
+    --bg-light : #fff;
+    --bg-dark : #1E1E1E;
+    --primary-light : #002C6D;
+    --primary-dark : #E8D318;
+    --bg-shade-1 : #282828;
+    --bg-shade-2: #B1B1B1;
+    --bg-shade-3 : #D9D9D9;
+}
 
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
-*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+}
 
-    html, body, div, span, applet, object, iframe,
-    h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-    a, abbr, acronym, address, big, cite, code,
-    del, dfn, em, img, ins, kbd, q, s, samp,
-    small, strike, strong, sub, sup, tt, var,
-    b, u, i, center,
-    dl, dt, dd, ol, ul, li,
-    fieldset, form, label, legend,
-    table, caption, tbody, tfoot, thead, tr, th, td,
-    article, aside, canvas, details, embed, 
-    figure, figcaption, footer, header, hgroup, 
-    menu, nav, output, ruby, section, summary,
-    time, mark, audio, video {
-        margin: 0;
-        padding: 0;
-        border: 0;
-        font-size: 100%;
-        font: inherit;
-        vertical-align: baseline;
-        text-decoration: none;
-        color: black;
-    }
-    /* HTML5 display-role reset for older browsers */
-    article, aside, details, figcaption, figure, 
-    footer, header, hgroup, menu, nav, section {
-        display: block;
-    }
-    body {
-        line-height: 1;
-    }
-    ol, ul {
-        list-style: none;
-    }
-    blockquote, q {
-        quotes: none;
-    }
-    blockquote:before, blockquote:after,
-    q:before, q:after {
-        content: '';
-        content: none;
-    }
-    table {
-        border-collapse: collapse;
-        border-spacing: 0;
-    }
-
-
-/* END OF CSS RESET */
 
 body {
-    /* height: 5000px; */
-    /* background-color: red; */
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-light);
+    color: var(--bg-dark);
 }
 
-header {
-    height: 10vh;
-    width: 100%;
-    background-color: rgb(255, 255, 255, .7);
+/* NAVBAR SECTION */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem 5%;
+    background-color: rgba(255, 255, 255 ,0.5);
     position: fixed;
-    display: grid;
-    grid: 'header-left header-mid header-mid header-right'; 
+    top:  0;
+    right: 0;
+    left: 0;
+    z-index: 999;
     box-shadow: 0px 2px 5px rgb(0, 0, 0, 0.3);
-    grid-template-columns: 25vw auto 25vw;
-    z-index: 2;
 }
 
-.header-left {
-    grid-area: header-left;
-}
-.header-left img {
-    height: 10vh;
-    margin-left: 10%;
-    box-sizing: border-box;
-    padding: 8px;
+.navbar .navbar-logo{
+    height: 3rem;
 }
 
-.header-mid {
-    grid-area: header-mid;
-    display: flex;   
-}
-
-.header-mid ul {
-    width: 100%;
+.navbar .navbar-nav{
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.header-mid ul li a{
-    text-decoration: none;
+
+.navbar .navbar-nav a {
+    color: var(--bg-dark);
     display: inline-block;
-    font-family :'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: rgb(0, 0, 0);
-    font-weight: bold;
-} 
+    font-size: 1.2rem;
+    margin: 0 1rem;
+    font-weight: 700;
+}
 
+.navbar .navbar-nav a:hover{
+    color: var(--primary-light);
+}
 
-.header-right {
-    grid-area: header-right;
+.navbar .navbar-nav a::after{
+    content: '';
+    display: block;
+    padding-bottom: 0.2rem;
+    border-bottom: 0.1rem solid var(--primary-light);
+    transform: scaleX(0);
+    transition: 0.2s;
+}
+
+.navbar .navbar-nav a:hover::after{
+    transform: scaleX(0.5);
+}
+
+.navbar .navbar-nav a.get-cv{
+    display: inline-block;
+}
+
+.navbar .navbar-nav a.get-cv .content-cv{
+    /* width: 9rem;
+    background-color: var(--bg-shade-2); */
+    border-radius: 50rem;
+    box-sizing: border-box;
     display: flex;
-    justify-content: center;
+    gap: 0.2rem;
+    padding: 0 0.3rem;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar .navbar-extra{
+    display: flex;
+    justify-content: space-between;
     align-items: center;
 }
 
-.header-right .theme-button {
-    margin-left: 10%;
-    color: white;
-    
+
+.navbar .navbar-extra a{
+    color: var(--bg-dark);
+    margin-left: 1rem;
 }
 
-.header-right .get-cv {
-    height: 50%;
-    width: 40%;
-    background-color: #002C6D;
-    border-radius: 50px;
-    text-align:center;
-    display: inline-block;
-    line-height: 2;
+.navbar .navbar-extra a:hover{
+    color: var(--primary-light);
 }
 
-.header-right .get-cv a {
-    text-decoration: none;
-    font-size: 1.2vw;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    /* font-weight: bold; */
-    color: rgb(255, 255, 255);
+#hamburger-menu {
+    display: none;
 }
 
-.header-right .theme-button {
-    height: 30px;
-    width: 30px;
-    background-color: gray;
+/* START OF HERO SECTION */
 
+.hero main{
+    padding: 15rem 2rem 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    height: 138vh;
 }
-
 
 .hero img{
     width: 100%;
 }
 
-
-.hero-front{
-    /* background-color: #002C6D; */
-    position:absolute;
-    z-index: 1;
-    margin-top: -52%;   
-    width: 100%;
+.hero .hero-bg-pembungkus .hero-bg{
+    position: absolute;
+    z-index: -2;
 }
 
-/* Hero RIght */
-
-.hero-front-left{
-    /* background-color: aquamarine; */
-    width: 40%;
-    float: left;
-    padding-left: 3vw;
+.hero .hero-bg-pembungkus .hero-object{
+    position: absolute;
+    z-index: -1;
+}
+/* .hero-object{
+    position: absolute;
+    z-index: -1;
 }
 
-.hero-front-left .hero-hello {
-    /* background-color: wheat; */
-    font-size: 2vw;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    margin-bottom: 1%;
-    color: #282828;
-}
+.hero-bg{
+    position: absolute;
+    z-index: -2;
+} */
 
-.hero-front-left .hero-name {
-    /* background-color: blueviolet; */
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 8vw;
-    margin-bottom: 5%;
-    color: #002C6D;
-}
-
-.hero-front-left .hero-name span{
-    color: #282828;
-}
-
-.hero-front-left .batang-1{
-    height: 0.3vw;
-    width: 30vw;
-    border-radius: 5px;
-    background-color: #002C6D;
-    margin-left: -10%;
-    margin-bottom: 5%;
-}
-
-.hero-front-left .hero-brief{
-    /* background-color: yellow; */
-    width: 66%;
-    font-family:Arial, Helvetica, sans-serif;
-    font-size: 1.3vw;
-    line-height: 130%;
+.hero-intro{
+    width: 50%;
 }
 
 p span{
@@ -206,23 +154,95 @@ p span{
     font-weight: bold;
 }
 
-/* Hero Mid */
-
-.hero-front-mid{
-    /* background-color: #282828; */
-    float: left;
-    /* height: 50%; */
-    /* width: 53%; */
+.hero-intro .hero-hello {
+    font-size: 2rem;
+    margin-bottom: 1rem;
 }
 
-.hero-front-mid .kotak1{
-    background-color: #002C6D;
-    height: 4vw;
-    width: 4vw;
-    margin-top: 28vw;
-    margin-left: 23vw;
+.hero-intro .hero-name {
+    font-size: 7.5rem;
+    margin-bottom: 2rem;
+    font-weight: 700;
+    line-height: 100%;
+}
+
+.hero-intro .batang-1{
+    height: 0.3rem;
+    width: 70%;
+    border-radius: 5px;
+    background-color: var(--primary-light);
+    margin-left: -10%;
+    margin-bottom: 1rem;
+}
+
+.hero-intro .hero-brief{
+    width: 55%;
+    font-size: 1.2rem;
+    line-height: 130%;
+    font-weight: 500;
+}
+
+.hero-sosmed{
+    width: 6%;
+}
+
+.sosmed-circle{
+    height: 4.5rem;
+    width: 4.5rem;
+    border: 0.25vw solid #282828;
+    box-sizing: border-box;
+    border-radius: 50%;
+    margin-bottom: 0.7rem;
+    text-align: center;
+    padding: 4%;
+}
+
+.sosmed-circle svg{
+    height: 100%;
+    width: 100%;
+}
+
+.batang-2{
+    float: right;
+    height: 100vh;
+    width: 0.3rem;
+    border-radius: 5px;
+    background-color: var(--primary-light);
+    margin-top: -45vh;
+}
+
+.hero-hiasan{
+    position: absolute;
+    margin-left: 40%;
+}
+
+/* END OF HERO SECTION */
+
+.tunggu{
+    display: none;
+}
+
+.hero-hiasan .kotak1{
+    background-color: var(--primary-light);
+    height: 4.5rem;
+    width: 4.5rem;
+    margin-top: 20rem;
+    margin-left: 23rem;
     animation-name: putar;
     animation-duration: 4s;
+    animation-iteration-count: infinite;
+}
+
+.hero-hiasan .kotak2{
+    border: 0.2rem solid var(--primary-light);
+    box-sizing: border-box;
+    height:4.5rem;
+    width: 4.5rem;
+    margin-top: -3rem;
+    margin-left: 21rem;
+    animation-name: putar;
+    animation-duration: 4s;
+    animation-delay: 0.2s;
     animation-iteration-count: infinite;
 }
 
@@ -231,103 +251,44 @@ p span{
     50%  {rotate: 180deg;}
 }
 
-.hero-front-mid .kotak2{
-    background-color: rgb(0, 0, 0, 0);
-    border: 0.2vw solid #002C6D;
-    box-sizing: border-box;
-    height: 4vw;
-    width: 4vw;
-    margin-top: -3vw;
-    margin-left: 22vw;
-    animation-name: putar;
-    animation-duration: 4s;
-    animation-delay: 0.2s;
-    animation-iteration-count: infinite;
-}
-
-.hero-front-mid .silinder{
-    background-color: rgb(0, 0, 0, 0);
-    border: 0.2vw solid #002C6D;
-    height: 2vw;
-    width: 6vw;
+.hero-hiasan .silinder{
+    border: 0.25rem solid var(--primary-light);
+    height: 3rem;
+    width: 10rem;
     border-radius: 4vw;
-    margin-top: 8vw;
-    margin-left: 24vw;
+    margin-top: 13vw;
+    margin-left: 22vw;
 }
 
-.hero-front-mid .lingkaran{
+.hero-hiasan .lingkaran{
     background-color: #002C6D;
     box-sizing: border-box;
-    height: 2vw;
-    width: 2vw;
+    height: 2.5rem;
+    width: 2.5rem;
     border-radius: 50%;
-    margin-top: -1vw;
-    margin-left: 25vw;
+    margin-top: -1.5rem;
+    margin-left: 23rem;
     animation-name: berpindah;
     animation-duration: 4s;
     animation-iteration-count: infinite;
+    animation-timing-function: linear;
 }
-
 
 @keyframes berpindah{
-    0%   {margin-left: 23vw; margin-top: -1vw;}
-    25%  {margin-left: 29vw; margin-top: -1vw;}
-    50%  {margin-left: 29vw; margin-top: -3vw;}
-    75%  {margin-left: 23vw; margin-top: -3vw;}
-    100% {margin-left: 23vw; margin-top: -1vw;}
-}
-
-
-/* Hero Right */
-
-.hero-front-right{
-    /* background-color: yellow; */
-    height: 100%;
-    width: 7%;
-    float: right;
-    margin-top: 5%;
-}
-
-.sosmed-hero{
-    float: left;
-}
-
-.sosmed-circle{
-    background-color: rgb(0, 0, 0,0);
-    height: 4vw;
-    width: 4vw;
-    border: 0.25vw solid #282828;
-    box-sizing: border-box;
-    border-radius: 50%;
-    margin-bottom: 10px;
-    text-align: center;
-    padding: 10%;
-}
-
-.sosmed-circle svg{
-    height: 100%;
-    width: 100%;
-}
-
-
-.batang-2{
-    float: right;
-    height: 44vw;
-    width: 0.3vw;
-    border-radius: 5px;
-    background-color: #002C6D;
-    margin-right: 20%;
-    margin-top: -20vw;
+    0% {transform: translateX();}
+    25% {transform: translate(9rem);}
+    50% {transform: translate(9rem, -2.6rem);}
+    75% {transform: translate(0rem, -2.6rem);}
+    100% {transform: translate(0rem, 0rem);}
 }
 
 .batang-3{
     height: 0.8vw;
-    width: 90vw;
+    width: 80vw;
     border-radius: 0px 5px 5px 0px;
     background-color: #002C6D;
     margin-top: -0.7vw;
     position: absolute;
-    z-index: 1;
 }
 
 .lingkaran-2{
@@ -337,9 +298,8 @@ p span{
     width: 3vw;
     border-radius: 50%;
     margin-top: -1.8vw;
-    margin-left: 88vw;
+    margin-left: 78vw;
     position: absolute;
-    z-index: 1;
 }
 
 /* About Me Section */
@@ -980,12 +940,247 @@ footer p{
 /* end */
 
 
-@media only screen and (max-width: 985px) {
-    body{
-        background-color: red;
-    }
 
+/* MEDIA QUERIES */
+
+/* Laptop */
+@media (max-width : 1366px) {
+    html    {
+        font-size: 80%;
+    }
 }
 
 
+/* Tablet */
+@media (max-width : 850px) {
+    html    {
+        font-size: 70%;
+    }
+    
+    body{
+        /* width: 100vw;
+        height: 100px;
+        background-color: #002C6D; */
+        /* overflow: hidden; */
+    }
+    /* Navbar Section */
+    #hamburger-menu{
+        display: inline-block;
+        z-index: 10;
+    }
 
+    .navbar .navbar-nav{
+        position: absolute;
+        top: 100%;
+        right: -100%;
+        background-color: var(--bg-shade-1);
+        width: 30rem;
+        height: 100vh;
+        transition: 0.3s;
+        display: block;
+        box-shadow: -0.3rem 0.3rem 1rem rgba(0, 0, 0, 0.3);
+        padding-top: 3rem;
+    }
+
+    .navbar .navbar-nav a:last-child{
+        border-top: 0.1rem solid var(--bg-light);
+        margin-top: 5rem;
+        width: 60%;
+    }
+    
+    .navbar .navbar-nav.active{
+        right: 0;
+    }
+
+    .navbar .navbar-nav a{
+        color: var(--bg-light);
+        font-weight: 500;
+        letter-spacing: 0.1rem;
+        display: block;
+        margin : 1.5rem;
+        padding: 0.5rem;
+        font-size: 2rem;
+    }
+
+    .navbar .navbar-nav a:hover{
+        color: var(--primary-dark);
+    }    
+
+    .navbar .navbar-nav a::after{
+        transform-origin: 0 0;     
+        border-bottom: 0.1rem solid var(--primary-dark);  
+        
+    }
+    .navbar .navbar-nav a:hover::after{
+        transform: scaleX(1);
+    }
+
+    /* Hero Section */
+    .hero{
+        /* overflow: hidden; */
+    }
+    
+    .hero .hero-bg{
+		height: 100vw;
+		width: 98vw;
+        /* margin: 50%; */
+        object-position: 0 30%;
+        /* transform: scale(1.3); */
+	}
+
+    .hero .hero-bg-pembungkus{
+        width: 100%;
+        height:100vw ;
+        position: absolute;
+        overflow: hidden;
+    }
+
+    
+	.hero .hero-object{
+        height: 100vw;
+		width: 50vw;
+		right: 7.4%;
+        object-fit: none;
+        object-position: 26% 30%;
+        transform: scale(1.4);
+        overflow: hidden;
+	}
+/*     
+    .hero .ob-pembungkus{
+        width: 100%;
+        height:100vw ;
+        position: absolute;
+        z-index: -1;
+        overflow: hidden;
+    } */
+
+    .hero main{
+        /* background-color: #002C6D; */
+        /* opacity: 0.5; */
+        height: 100vw;
+        padding: 10rem 3rem 3rem 3rem;
+        flex-wrap: wrap;
+    }
+
+    .hero-intro{
+        width: 100%;
+        height: 0;
+    }
+
+    .hero-sosmed{
+        /* background-color: #E8D318; */
+        width: 60%;
+        margin-top: 15rem;
+        /* margin-top: 0; */
+        /* padding: 2rem; */
+    } 
+    .hero-sosmed .batang-2{
+        float: none;
+        height: 0.2rem;
+        width: 100%;
+        margin: 0 0 0 -20%;
+    }
+
+    .hero-sosmed .list-sosmed{
+        /* background-color: green; */
+        display: flex;
+        margin-top: 2rem;
+        width: 80%;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .hero-sosmed .sosmed-circle{
+        height: 4rem;
+        width: 4rem;
+        border: 0.2rem solid var(--bg-dark);
+        margin: 0;
+        padding: .4rem;
+    }
+
+
+    .hero-hiasan{
+        margin: 4rem 0 0 20rem;
+    }
+
+    .hero-hiasan .silinder{
+        margin: 26rem 0 0 22rem;
+    }
+
+    .hero-hiasan .lingkaran{
+        margin: -1.5rem auto auto 21rem;
+    }
+
+
+    /* End of Hero Section */
+
+}
+
+/* Mobile Phone */
+@media (max-width : 450px) {
+    html    {
+        font-size: 50%;
+    }
+
+    .hero .hero-bg-pembungkus{
+        height: 100vh;
+    }
+
+    .hero .hero-bg-pembungkus .hero-bg{
+        height: 100vh;
+        width: auto;
+        transform: scale(1);
+    }
+
+    .hero .hero-bg-pembungkus .hero-object{
+        height: 100vh;
+        width: 100%;
+        transform: scale(1);
+        right: 0%;
+        top: 5%;
+        object-position: 25% 0%;
+    }
+
+    .hero main{
+        padding: 12rem 0 0 2rem;
+        /* background-color: #E8D318; */
+        height: 100vh;
+        display: block;
+    }
+
+    .hero-intro{
+        margin-top: 0rem;
+        width: 85%;
+        display: block;
+        height: 60%;
+    }
+
+    .hero-intro .hero-brief{
+        width: 60%;
+    }
+
+    .hero .hero-sosmed{
+        /* width: 20%; */
+        margin: 0;
+    }
+
+    .hero .hero-sosmed .batang-2{
+        width: 40%;
+        /* margin-top: 0; */
+    }
+
+    .hero .hero-sosmed .list-sosmed{
+        display: block;
+    }
+
+    .hero .hero-sosmed .list-sosmed .sosmed-circle{
+        margin-bottom: 1rem;
+    }
+
+    .hero .hero-hiasan{
+        margin: -60vh 0 0 -5vw ;
+    }    
+
+
+
+}
