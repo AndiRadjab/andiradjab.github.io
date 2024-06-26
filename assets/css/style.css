@@ -665,79 +665,42 @@ h1 span{
 /* PORTFOLIO SECTION */
 
 .my-portfolios{
-    /* height: 1300px; */
     height: auto;
     background-color: #D9D9D9;   
-    /* justify-content: center; */
+    padding-bottom: 100px;
 }
 
-.my-portfolios-title{
-    /* background-color: #002C6D; */
-    /* width: 80%;
-    height: 20%; */
-    display: flex;
-    justify-content: center;
-}
-
-.portfolio-menu{
-    width: 36%;
-    /* background-color: black; */
-}
-
-.portfolio-menu ul {
-    /* background-color: #002C6D; */
-    margin-top: 1%;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.portfolio-menu ul li a{
-    text-decoration: none;
-    display: inline-block;
-    font-family :'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: rgb(0, 0, 0);
-    font-weight:600;
-} 
-
-.body-card {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* min-height: 80vh; */
-    margin: 0;
-    background-color: inherit;
-}
-
-
-.card-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+.container-card{
     max-width: 1200px;
+    width: 95%;
     margin: 0 auto;
 }
 
-.card {
+.slider-wrapper {
+    position: relative;
+}
+
+.slider-wrapper .image-list .card {
     width: 250px;
-    height: 400px;
-    margin: 20px;
-    background-color: inherit;
-    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+    height: 350px;
+    object-fit: cover;
+    filter: grayscale(1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 20px;
     overflow: hidden;
     transition: box-shadow 0.3s, transform 0.3s;
     cursor: pointer;
     border: 3px solid #002C6D;
-    padding: 20px;
+    padding: 10px;
     box-sizing: border-box;
 }
 
-.card:hover {
+
+.slider-wrapper .image-list .card:hover {
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
-    transform: scale(1.05);
+    transform: scale(1.02);
     border: none;
+    filter: grayscale(0);
 }
 
 .card:hover img{
@@ -745,12 +708,14 @@ h1 span{
     border: 3px solid #002C6D;
 }
 
-.card:hover h6{
-    display: none;
-}
 .card:hover .card-description{
     display: none;
 }
+
+.card:hover h6{
+    display: none;
+}
+
 .card:hover .card-title{
     color: #002C6D;
     font-size: 1.5rem;
@@ -776,7 +741,18 @@ h1 span{
 .card-title {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 1.1rem;
-    margin-bottom: 10px;
+    margin: 5px auto 10px;
+    /* margin-bottom: 10px; */
+}
+
+.card-description {
+    font-size: 0.7rem;
+    /* line-height: auto; */
+    font-family: Arial, Helvetica, sans-serif;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Number of lines to show before adding ellipsis */
+    -webkit-box-orient: vertical;
 }
 
 .card h6{
@@ -786,16 +762,100 @@ h1 span{
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.card-description {
-    font-size: 0.9rem;
-    /* line-height: auto; */
-    font-family: Arial, Helvetica, sans-serif;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 3; /* Number of lines to show before adding ellipsis */
-    -webkit-box-orient: vertical;
+.slider-wrapper .slide-button {
+    position: absolute;
+    top: 50%;
+    height: 50px;
+    width: 50px;
+    color: #fff;
+    border: none;
+    outline: none;
+    background: #000;
+    font-size: 2.2rem;
+    cursor: pointer;
+    border-radius: 50%;
+    transform: translateY(-50%);
 }
 
+.slider-wrapper .slide-button:hover {
+    background: #444;
+}
+
+.slider-wrapper .slide-button#prev-slide {
+    z-index: 2;
+    left: -20px;
+    display: none;
+}
+
+.slider-wrapper .slide-button#next-slide {
+    right: -20px;
+}
+
+.slider-wrapper .image-list{
+    display: grid;
+    gap: 18px;
+    font-size: 0;
+    padding: 30px 10px 30px 10px;
+    /* margin-bottom: 30px; */
+    overflow-x: auto;
+    scrollbar-width: none;
+    grid-template-columns: repeat(10,1fr);
+}
+
+.slider-wrapper .image-list::-webkit-scrollbar {
+    direction: none;   
+}
+
+
+/* .slider-wrapper .image-list .card:hover{
+    filter: grayscale(0);
+    padding: 1%;
+    border-radius: 10%;
+    border: 3px solid maroon;
+} */
+
+.container .slider-scrollbar {
+    height: 24px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.slider-scrollbar .scrollbar-track {
+    height: 2px;
+    width: 100%;
+    background-color: #ccc;
+    position: relative;
+    border-radius: 4px;
+}
+
+.slider-scrollbar:hover .scrollbar-track {
+    height: 4px;
+}
+
+.slider-scrollbar .scrollbar-thumb {
+    position: absolute;
+    height:100%;
+    width: 50%;
+    background-color: #000;
+    border-radius: inherit;
+    cursor: grab;
+}
+
+.slider-scrollbar .scrollbar-thumb:active {
+    cursor: grabbing;
+    height: 8px;
+    top: -2px;
+}
+
+.slider-scrollbar .scrollbar-thumb::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -10px;
+    bottom: -10px;
+}
 
 /* BLOGS SECTION */
 
@@ -1200,7 +1260,7 @@ footer p{
     .about-me-skills{
         padding: 20px 0 0 0;
         /* background-color: aquamarine; */
-        height: 400px;
+        /* height: 400px; */
     }
 
     .about-me-skills h1{
