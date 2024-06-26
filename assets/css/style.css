@@ -305,15 +305,30 @@ p span{
 /* About Me Section */
 
 .about-me{
+    display: grid;
+    box-sizing: border-box;
+    grid-template-rows: 1fr 3fr; 
+    grid-template-columns: 1fr 1.2fr 1.5fr; 
+    height: 95vh;
+    grid-template-areas: 
+        "propic   title    skill"    
+        "propic   desc     skill"
+        ;
+    /* grid-gap: 10px; */
+    /* padding: 10px; */
+    /* font-weight: 600;
+    font-size: 20px; */
+    /* text-align: center; */
+    /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
+    /* color: aliceblue; */
+    /* background-color: #d8d8d8; */
     /* background-color: aquamarine; */
-    height: 580px;
+    /* height: 580px; */
 }
 
 .about-me-propic{
-    /* background-color: red; */
-    float: left;
-    height: 100%;
-    width: 33%;
+    grid-area: propic;
+    /* background-color: #002C6D; */
 }
 
 .about-me-propic .propic{
@@ -431,14 +446,13 @@ p span{
     100%{scale: 50%; }
 }
 
+.about-me-title{
+    grid-area: title;
+    /* background-color: #E8D318; */
+}
 
-.about-me-desc{
-    /* background-color: yellow; */
-    float: left;
-    height: 100%;
-    width: 33%;
-    padding-right: 3vw;
-    box-sizing: border-box;
+.about-me-title h1{
+    margin : 20% 0 0 10%;
 }
 
 h1{
@@ -446,13 +460,15 @@ h1{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-.about-me-desc h1{
-    margin : 20% 0 0 10%;
-}
-
 h1 span{
     color: #002C6D;
 }
+
+.about-me-desc{
+    grid-area: desc;
+    /* background-color: #555; */
+}
+
 
 .about-me-desc p{
     margin : 5% 0 0 10%;
@@ -463,22 +479,25 @@ h1 span{
 
 .about-me-skills{
     /* background-color: aqua; */
-    float: left;
+    grid-area: skill;
+    padding: 21% 0 0 8%;
+    /* float: left; */
     height: 100%;
-    width: 34%; 
+    /* width: 34%;  */
 }
 
 .about-me-skills h1{
-margin : 23% 0 0 5%;
+    /* margin : 20% 0 0 5%; */
     font-size: 3vw;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .about-me-skills .skills-list{
-    margin: 5% 0 0 5%;
+    margin: 5% 0 0 0;
     /* background-color: aquamarine; */
-    width: 25vw;
+    /* width: 35vw; */
     height: 100%;
+    box-sizing: border-box;
 }
 
 .about-me-skills .skills-list .skills-item{
@@ -487,7 +506,7 @@ margin : 23% 0 0 5%;
     border-radius: 1vw;
     border: 0.2vw solid  #002C6D;
     float: left;
-    margin: 0 5% 10% 0;
+    margin: 0 5% 7% 0;
     box-sizing: border-box;
     padding: 1.5%;
     animation-name: popup;
@@ -503,7 +522,7 @@ margin : 23% 0 0 5%;
     margin-top: 12%;   
     text-align: center;
     font-family:Arial, Helvetica, sans-serif;
-    font-size: 0.6rem;
+    font-size: 0.8rem;
     font-weight: bold;
 }
 
@@ -515,10 +534,10 @@ margin : 23% 0 0 5%;
 .batang-4{
     /* float: right; */
     height: 0.2vw;
-    width: 35vw;
+    width: 70vw;
     border-radius: 0px 5px 5px 0px;
     background-color: #002C6D;
-    margin : 2vw 0 0 64%;
+    margin : 0 0 0 29%;
 }
 
 .lingkaran-3{
@@ -528,16 +547,16 @@ margin : 23% 0 0 5%;
     height: 3vw;
     width: 3vw;
     border-radius: 50%;
-    margin : -3vw 0 0 100%;
+    /* margin : -3vw 0 0 100%; */
     animation-name: laju;
-    animation-duration: 4s;
+    animation-duration: 10s;
     animation-iteration-count: infinite;
 }
 
 @keyframes laju {
-    0% {margin : -3vw 0 0 95%;}
-    50% {margin : -3vw 0 0 63%; background-color: #282828;}
-    100% {margin : -3vw 0 0 95%;}
+    0% {margin : -1.5vw 0 0 97%; }
+    50% {margin : -1.5vw 0 0 29%; background-color: #282828; transform: scale(0.5);}
+    100% {margin : -1.5vw 0 0 97%;}
 
     
 }
@@ -550,6 +569,7 @@ margin : 23% 0 0 5%;
 }
 
 .container-services{
+    display: none;
     width: 100%;
     height: 500px;
     display: flex;
@@ -557,6 +577,7 @@ margin : 23% 0 0 5%;
     align-items: center;
     background-image: linear-gradient(rgb(255,255,255),#D9D9D9);
 }
+
 
 .services-list{
     /* background-color: #282828; */
@@ -948,6 +969,7 @@ footer p{
     html    {
         font-size: 80%;
     }
+    
 }
 
 
@@ -1113,6 +1135,113 @@ footer p{
 
 
     /* End of Hero Section */
+    
+    /* About me section */
+    .about-me {
+        grid-template-rows: 50px 200px auto 1fr;
+        grid-template-columns: 1fr;
+        height: 100vh;
+        grid-template-areas: 
+        "title"
+        "propic"
+        "desc"
+        "skill"
+        ;
+        text-align: center;
+    }
+    
+    .about-me-title h1{
+        margin : 5% 0 0 0;
+    }
+    
+    .about-me-propic{
+        display: flex;
+        justify-content: center;
+    }
+    
+    .about-me-propic .propic{
+        position: absolute;
+        width: 150px;
+        height: 180px;
+        margin: 0 0 0 -10px;
+    }
+    
+    .about-me-propic .propic img{
+        height: inherit;
+        width: inherit;
+        object-fit: cover;
+        object-position: 25% 25%;
+    }
+    
+    .about-me-propic .kotak-3{
+        box-sizing: border-box;
+        width: 150px;
+        height: 180px;
+        border: 0.3vw solid #002C6D;
+        margin: 7px 0 0 7px ;
+        position: absolute;
+    }
+
+    .grid-1 {
+        display: none;
+    }
+
+    .bentolan{
+        margin: 90px 0 0 100px;
+        display: flex;
+    }
+
+    .about-me-desc p{
+        padding: 0 20px;
+        margin : 10px 0 0 0;
+        font-size: 1.5rem;
+    }
+    
+    .about-me-skills{
+        padding: 20px 0 0 0;
+        /* background-color: aquamarine; */
+        height: 400px;
+    }
+
+    .about-me-skills h1{
+        margin : 0 0 0 0;
+        font-size: 2rem;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+
+    .about-me-skills .skills-list{
+        /* background-color: #E8D318; */
+        padding: 20px 20px;
+        display: flex;
+        justify-content: center;
+        margin: 0 0 0 0;
+        flex-wrap: wrap;
+        column-gap: 10px;
+        row-gap: 30px;
+    }
+
+    .about-me-skills .skills-list .skills-item{
+        width: 60px;
+        height: 60px;
+        border-radius: 10px;
+        margin: 0 0 0 0;
+    }
+
+    .skills-item p{
+        font-size: 1rem;
+    }
+
+    .batang-4{
+        margin : 0 auto;
+    }
+    
+    @keyframes laju {
+        0%   {margin : -1.5vw 0 0 18%; }
+        25%  {transform: scale(0.5);}
+        50%  {margin : -1.5vw 0 0 80%;background-color: #282828; transform: scale(1);}
+        75%  {transform: scale(0.5);}
+        100% {margin : -1.5vw 0 0 18%;}
+    }
 
 }
 
